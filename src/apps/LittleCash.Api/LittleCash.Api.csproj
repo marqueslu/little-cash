@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="7.0.0-rc2.7" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.0.0-rc2.7" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="7.0.0-rc2.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LittleCash.Core\LittleCash.Core.csproj" />
   </ItemGroup>
 
 </Project>
