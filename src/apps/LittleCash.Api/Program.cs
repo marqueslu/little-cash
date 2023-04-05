@@ -1,9 +1,8 @@
 using HealthChecks.UI.Client;
 using LittleCash.CrossCutting.Extensions;
 using LittleCash.CrossCutting.Options;
-using DiagnosticHealthCheck = Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-
 
 var builder = WebApplication.CreateBuilder(args);
 var mongoOptions = builder.Configuration.GetOptionsBySection<MongoDatabaseOptions>();
@@ -13,9 +12,16 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services
+    .AddHealthChecks()
+    .AddMongoDb(
+        mongoOptions.ConnectionString,
+        mongoOptions.DatabaseName,
+        failureStatus: HealthStatus.Unhealthy,
+        tags: new[] { "database", "mongo" }, TimeSpan.FromSeconds(1));
+
 builder.Services.AddHealthChecksUI().AddInMemoryStorage();
-builder.Services.AddHealthChecks().AddMongoDb(mongoOptions.ConnectionString, mongoOptions.DatabaseName,
-    failureStatus: HealthStatus.Unhealthy, tags: new String[] { "database", "mongo" });
 
 var app = builder.Build();
 
@@ -26,7 +32,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHealthChecks("/health", new DiagnosticHealthCheck.HealthCheckOptions()
+app.UseHealthChecks("/health", new HealthCheckOptions()
     {
         Predicate = _ => true,
         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
