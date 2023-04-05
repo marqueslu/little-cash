@@ -1,8 +1,13 @@
 using HealthChecks.UI.Client;
+using LittleCash.Api.UseCases;
+using LittleCash.Api.UseCases.Affiliation;
+using LittleCash.Api.UseCases.Affiliation.AffiliateCommercialEstablishmentUseCase;
 using LittleCash.CrossCutting.Extensions;
 using LittleCash.CrossCutting.Options;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +18,15 @@ var mongoOptions = builder
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+});
+
+builder.Services
+    .TryAddScoped<IUseCase<AffiliateCommercialEstablishmentUseCaseRequest,
+        AffiliateCommercialEstablishmentUseCaseResponse>, AffiliateCommercialEstablishmentUseCase>();
 
 builder.Services
     .AddHealthChecks()
@@ -37,21 +48,18 @@ builder.Services
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+app.MapAffiliateCommercialEstablishmentUseCases();
 
 app.UseHealthChecks("/health", new HealthCheckOptions()
-    {
-        Predicate = _ => true,
-        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-    })
-    .UseHealthChecksUI(options => { options.UIPath = "/dashboard"; });
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+
+app.UseHealthChecksUI(options => { options.UIPath = "/dashboard"; });
 
 app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
+
 app.Run();
