@@ -1,0 +1,12 @@
+version: '3.5'
+
+services:
+  little_cash_mongo:
+    image: "mongo"
+    container_name: little_cash_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: "@Pa55word"
+    ports:
+      - "27017:27017"        
+
