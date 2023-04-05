@@ -6,4 +6,23 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Affiliation\Entities" />
+    <Folder Include="Affiliation\Repositories" />
+    <Folder Include="Affiliation\Services" />
+    <Folder Include="Settings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Affiliation\Requests\Common\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Affiliation\Requests\Common\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Affiliation\Requests\Common\**" />
+  </ItemGroup>
+
 </Project>

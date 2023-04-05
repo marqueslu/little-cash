@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="7.0.0-rc2.6" />
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="7.0.0-rc2.7" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.0.0-rc2.7" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="7.0.0-rc2.7" />
@@ -14,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\core\LittleCash.CrossCutting\LittleCash.CrossCutting.csproj" />
     <ProjectReference Include="..\LittleCash.Core\LittleCash.Core.csproj" />
   </ItemGroup>
 
