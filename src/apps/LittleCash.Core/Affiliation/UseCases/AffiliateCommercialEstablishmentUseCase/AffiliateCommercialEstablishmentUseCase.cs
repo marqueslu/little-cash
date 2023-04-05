@@ -1,4 +1,6 @@
-﻿namespace LittleCash.Api.UseCases.Affiliation.AffiliateCommercialEstablishmentUseCase;
+﻿using LittleCash.Api.UseCases;
+
+namespace LittleCash.Core.Affiliation.UseCases.AffiliateCommercialEstablishmentUseCase;
 
 public class AffiliateCommercialEstablishmentUseCase : IUseCase<AffiliateCommercialEstablishmentUseCaseRequest,
     AffiliateCommercialEstablishmentUseCaseResponse>    

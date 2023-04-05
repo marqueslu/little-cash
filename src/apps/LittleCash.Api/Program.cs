@@ -1,11 +1,9 @@
 using HealthChecks.UI.Client;
-using LittleCash.Api.UseCases;
-using LittleCash.Api.UseCases.Affiliation;
-using LittleCash.Api.UseCases.Affiliation.AffiliateCommercialEstablishmentUseCase;
+using LittleCash.Api.EndpointRegistrationsByUseCase.Affiliation;
+using LittleCash.Core.Affiliation.UseCases.AffiliateCommercialEstablishmentUseCase;
 using LittleCash.CrossCutting.Extensions;
 using LittleCash.CrossCutting.Options;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
 
@@ -24,10 +22,8 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
 });
 
-builder.Services
-    .TryAddScoped<IUseCase<AffiliateCommercialEstablishmentUseCaseRequest,
-        AffiliateCommercialEstablishmentUseCaseResponse>, AffiliateCommercialEstablishmentUseCase>();
-
+builder.Services.AddAffiliateCommercialEstablishmentUseCase();
+    
 builder.Services
     .AddHealthChecks()
     .AddMongoDb(
@@ -50,7 +46,8 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-app.MapAffiliateCommercialEstablishmentUseCases();
+
+app.MapEndpointsForAffiliateCommercialEstablishmentUseCases();
 
 app.UseHealthChecks("/health", new HealthCheckOptions()
 {

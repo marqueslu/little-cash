@@ -7,22 +7,37 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Affiliation\Entities" />
-    <Folder Include="Affiliation\Repositories" />
-    <Folder Include="Affiliation\Services" />
-    <Folder Include="Settings" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Affiliation\Requests\Common\**" />
+    <Compile Remove="Affiliation\Entities\**" />
+    <Compile Remove="Affiliation\Repositories\**" />
+    <Compile Remove="Affiliation\Services\**" />
+    <Compile Remove="Settings\**" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="Affiliation\Requests\Common\**" />
+    <EmbeddedResource Remove="Affiliation\Entities\**" />
+    <EmbeddedResource Remove="Affiliation\Repositories\**" />
+    <EmbeddedResource Remove="Affiliation\Services\**" />
+    <EmbeddedResource Remove="Settings\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Affiliation\Requests\Common\**" />
+    <None Remove="Affiliation\Entities\**" />
+    <None Remove="Affiliation\Repositories\**" />
+    <None Remove="Affiliation\Services\**" />
+    <None Remove="Settings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Affiliation\UseCases" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>..\..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.AspNetCore.App\6.0.15\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

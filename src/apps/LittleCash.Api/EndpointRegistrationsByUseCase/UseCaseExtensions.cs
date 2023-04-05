@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LittleCash.Api.UseCases;
 
-namespace LittleCash.Api.UseCases;
+namespace LittleCash.Api.EndpointRegistrationsByUseCase;
 
-public static class UseCaseHttpRequestExtensions
+public static class UseCaseExtensions
 {
-    public static async Task<ActionResult> ExecuteUseCase<TRequest, TResponse>(
-        this HttpRequest httpRequest, IEndpointRouteBuilder endpointBuilder, Func<object, ActionResult> action)
+    public static async Task<IResult> ExecuteUseCase<TRequest, TResponse>(
+        this HttpRequest httpRequest, IEndpointRouteBuilder endpointBuilder, Func<object, IResult> action)
         where TRequest : class, IUseCaseRequest
         where TResponse : class, IUseCaseResponse
     {
