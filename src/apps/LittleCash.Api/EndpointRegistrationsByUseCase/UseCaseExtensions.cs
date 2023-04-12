@@ -1,4 +1,4 @@
-﻿using LittleCash.Api.UseCases;
+﻿using LittleCash.Core.Shared.UseCases;
 
 namespace LittleCash.Api.EndpointRegistrationsByUseCase;
 

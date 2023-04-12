@@ -1,4 +1,4 @@
-﻿using LittleCash.Api.UseCases;
+﻿using LittleCash.Core.Shared.UseCases;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

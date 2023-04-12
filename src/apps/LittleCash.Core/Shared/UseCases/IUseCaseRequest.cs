@@ -1,4 +1,4 @@
-﻿namespace LittleCash.Api.UseCases;
+﻿namespace LittleCash.Core.Shared.UseCases;
 
 public interface IUseCaseRequest {}
 public interface IUseCaseResponse {}
