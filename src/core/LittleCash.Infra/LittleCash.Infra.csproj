@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\apps\LittleCash.Core\LittleCash.Core.csproj" />
+    <ProjectReference Include="..\..\core\LittleCash.Core\LittleCash.Core.csproj" />
   </ItemGroup>
 
 </Project>

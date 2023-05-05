@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A88B2D21
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleCash.UnitTests", "tests\LittleCash.UnitTests\LittleCash.UnitTests.csproj", "{D25EEF74-F12B-41CA-A2C3-ED0F8793616F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleCash.Core", "src\apps\LittleCash.Core\LittleCash.Core.csproj", "{D462EB8E-5F81-4F37-AB73-5BDB722602B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleCash.Core", "src\core\LittleCash.Core\LittleCash.Core.csproj", "{D462EB8E-5F81-4F37-AB73-5BDB722602B2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{DAB32940-EBA7-4688-807E-9811A8FC78A6}"
 EndProject
