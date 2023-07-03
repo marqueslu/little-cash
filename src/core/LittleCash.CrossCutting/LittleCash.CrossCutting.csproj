@@ -32,4 +32,9 @@
       <None Remove="DependencyInjection\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\LittleCash.Core\LittleCash.Core.csproj" />
+      <ProjectReference Include="..\LittleCash.Infra\LittleCash.Infra.csproj" />
+    </ItemGroup>
+
 </Project>
