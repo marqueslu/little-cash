@@ -1,4 +1,6 @@
-﻿using LittleCash.Core.Shared.UseCases;
+﻿using LittleCash.Api.Exceptions;
+using LittleCash.Core.Shared.UseCases;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace LittleCash.Api.EndpointRegistrationsByUseCase;
 
@@ -19,12 +21,23 @@ public static class UseCaseExtensions
             .ServiceProvider
             .CreateScope()
             .ServiceProvider;
+        
+        try
+        {
+            var response = await requestScope
+                .GetRequiredService<IUseCase<TRequest,
+                    TResponse>>()
+                .ExecuteAsync(request, new CancellationToken());
+            return action.Invoke(response);
+        }
+        catch (ConflictException e)
+        {
+            return Results.BadRequest(e.Message);
+        }
+        catch (Exception e)
+        {
+            return Results.BadRequest(e);
+        }
 
-        var response = await requestScope
-            .GetRequiredService<IUseCase<TRequest,
-                TResponse>>()
-            .ExecuteAsync(request);
-
-        return action.Invoke(response);
     }
 }
