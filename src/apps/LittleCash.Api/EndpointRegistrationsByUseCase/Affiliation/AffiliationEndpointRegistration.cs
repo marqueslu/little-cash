@@ -11,7 +11,7 @@ public static class AffiliationEndpointRegistration
 
         group
             .MapPost("/",
-                (HttpRequest httpRequest) => httpRequest
+                (HttpRequest httpRequest, CancellationToken cancellationToken) => httpRequest
                     .ExecuteUseCase<AffiliateCommercialEstablishmentUseCaseRequest,
                         AffiliateCommercialEstablishmentUseCaseResponse>(
                         endpointBuilder,
