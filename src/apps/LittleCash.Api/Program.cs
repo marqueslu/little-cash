@@ -1,6 +1,6 @@
 using HealthChecks.UI.Client;
 using LittleCash.Api.EndpointRegistrationsByUseCase.Affiliation;
-using LittleCash.Core.Affiliation.UseCases.AffiliateCommercialEstablishmentUseCase;
+using LittleCash.CrossCutting.Dependencies.Affiliation;
 using LittleCash.CrossCutting.Extensions;
 using LittleCash.CrossCutting.Options;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
