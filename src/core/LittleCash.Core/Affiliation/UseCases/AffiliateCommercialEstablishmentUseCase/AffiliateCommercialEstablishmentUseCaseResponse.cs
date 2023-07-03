@@ -4,5 +4,5 @@ namespace LittleCash.Core.Affiliation.UseCases.AffiliateCommercialEstablishmentU
 
 public class AffiliateCommercialEstablishmentUseCaseResponse: IUseCaseResponse
 {
-    public int Teste { get; set; }
+    public bool Success { get; set; }
 }
