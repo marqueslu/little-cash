@@ -1,7 +1,9 @@
 using LittleCash.Core.Affiliation.Repositories;
 using LittleCash.Core.Affiliation.UseCases.AffiliateCommercialEstablishmentUseCase;
+using LittleCash.Core.Entities;
 using LittleCash.Core.Shared.UseCases;
 using LittleCash.Infra.Affiliation.Repositories;
+using LittleCash.Infra.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -15,5 +17,6 @@ public static class AffiliateCommercialEstablishmentUseCaseConfigurations
             .TryAddScoped<IUseCase<AffiliateCommercialEstablishmentUseCaseRequest,
                 AffiliateCommercialEstablishmentUseCaseResponse>, AffiliateCommercialEstablishmentUseCase>();
         collection.TryAddScoped<ICommercialEstablishmentRepository, CommercialEstablishmentRepository>();
+        collection.TryAddMongoCollection<CommercialEstablishment>();
     }
 }
